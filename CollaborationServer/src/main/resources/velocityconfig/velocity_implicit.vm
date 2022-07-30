@@ -1,0 +1,26 @@
+#* @implicitly included *#
+#* @vtlvariable name="WebPath" type="app.util.Path.Web" *#
+#* @vtlvariable name="msg" type="app.util.MessageBundle" *#
+#* @vtlvariable name="clients" type="java.lang.Iterable<app.client.Client>" *#
+#* @vtlvariable name="client" type="app.client.Client" *#
+#* @vtlvariable name="resources" type="java.lang.Iterable<app.resource.Resource>" *#
+#* @vtlvariable name="resource" type="app.resourcet.Resource" *#
+#* @vtlvariable name="propagations" type="java.lang.Iterable<app.propagation.Propagation>" *#
+#* @vtlvariable name="propagation" type="app.propagation.Propagation" *#
+#* @vtlvariable name="ptemp" type="app.propagation.Propagation" *#
+#* @vtlvariable name="users" type="java.lang.Iterable<app.user.User>" *#
+#* @vtlvariable name="user" type="app.user.User" *#
+#* @vtlvariable name="currentUser" type="java.lang.String" *#
+#* @vtlvariable name="currentRole" type="java.lang.String" *#
+#* @vtlvariable name="CManagement" type="app.cmanagement.CManagement" *#
+#* @vtlvariable name="conflictRule" type="app.cmanagement.CDRule" *#
+#* @vtlvariable name="resourceList" type="java.util.ArrayList<app.cmanagement.CDRule>" *#
+#* @vtlvariable name="clientsPriority" type="app.cmanagement.CPriority" *#
+#* @vtlvariable name="loggedOut" type="java.lang.String" *#
+#* @vtlvariable name="authenticationFailed" type="java.lang.String" *#
+#* @vtlvariable name="authenticationSucceeded" type="java.lang.String" *#
+#* @vtlvariable name="loginRedirect" type="java.lang.String" *#
+#* @vtlvariable name="registerationSucceeded" type="java.lang.String" *#
+#* @vtlvariable name="registerationFailed" type="java.lang.String" *#
+#* @vtlvariable name="newClient" type="java.lang.String" *#
+#* @vtlvariable name="temp" type="java.lang.String" *#

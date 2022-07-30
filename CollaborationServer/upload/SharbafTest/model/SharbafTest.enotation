@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="ASCII"?>
+<enotation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:enotation="http://www.eclipsesource.com/glsp/ecore/notation">
+  <semanticElement uri="/"/>
+  <elements xsi:type="enotation:Shape">
+    <semanticElement uri="//Seminar"/>
+    <position x="771.0" y="123.0"/>
+  </elements>
+  <elements xsi:type="enotation:Shape">
+    <semanticElement uri="//Professor"/>
+    <position x="479.0" y="468.0"/>
+  </elements>
+  <elements xsi:type="enotation:Shape">
+    <semanticElement uri="//Student"/>
+    <position x="202.0" y="123.0"/>
+  </elements>
+  <elements xsi:type="enotation:Edge" source="//@elements.1" target="//@elements.0">
+    <semanticElement uri="//Professor/instructs"/>
+  </elements>
+  <elements xsi:type="enotation:Shape">
+    <semanticElement uri="//Enrolment"/>
+    <position x="522.9710470864911" y="-8.878831501689726"/>
+  </elements>
+  <elements xsi:type="enotation:Shape">
+    <semanticElement uri="//Course"/>
+    <position x="803.5615418320806" y="678.7864617237101"/>
+  </elements>
+  <elements xsi:type="enotation:Edge" source="//@elements.1" target="//@elements.5">
+    <semanticElement uri="//Professor/courses"/>
+  </elements>
+  <elements xsi:type="enotation:Edge" source="//@elements.5" target="//@elements.1">
+    <semanticElement uri="//Course/professors"/>
+  </elements>
+  <elements xsi:type="enotation:Shape">
+    <semanticElement uri="//NewEDataType6"/>
+    <position x="479.34448004816466" y="798.8085202528641"/>
+    <size width="175.0" height="75.0"/>
+  </elements>
+</enotation:Diagram>

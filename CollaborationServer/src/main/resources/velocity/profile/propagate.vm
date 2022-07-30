@@ -1,0 +1,67 @@
+#parse("/velocity/layout.vm")
+#@mainLayout()
+    <h1>$msg.get("PROPAGATE_HEADING")</h1>
+
+	#if($registerationFailed)
+        <p class="bad notification">$msg.get("PROPAGATE_FAILED")</p>
+    #elseif($registerationSucceeded)
+        <p class="good notification">$msg.get("PROPAGATE_SUCCEEDED")</p>
+    #end
+
+    <h2>$msg.get("PROPAGATE_INSTRUCTIONS")</h2>
+
+	    #foreach($client in $clients)
+		    #if($currentRole=="admin" or $client.creator==$currentUser)
+		    	<fieldset>
+	  			<legend><strong> $msg.get("CLIENT_ID"): </strong> $client.clientID</legend>
+			<!--    #foreach($resource in $resources)  #end-->
+					#foreach($temp in $client.resourceList)
+			    
+			    <!-- #set ($propagation = $propagations.getPropagation($resource.resourceID, $client.clientID)) -->
+					#set($ptemp = "")
+					#foreach($propagation in $propagations)
+						#if($client.clientID==$propagation.clientID  and $temp==$propagation.resourceID)
+							#set($ptemp = $propagation)
+						#end
+					#end
+
+			    	<form method="post">
+	  					<fieldset>
+	  					<legend><strong> $msg.get("RESOURCE_ID"): </strong> $temp</legend>
+	  					  	<input type="hidden" name="clientID" value=$client.clientID>	
+	  					  	<input type="hidden" name="resourceID" value=$temp>			
+	  						<p><strong>$msg.get("PROPAGATE_PUBLISH"): </strong></p>
+						    <div>
+						    	<input type="radio" id="online" name="publishStrategy" value="Online" #if($ptemp.publishStrategy=="Online") checked #end>
+								<label id="test" for="online">$msg.get("ONLINE_LABEL")</label>&nbsp;&nbsp;&nbsp;&nbsp;	
+								<input type="radio" id="offline" name="publishStrategy" value="Offline" #if($ptemp.publishStrategy=="Offline") checked #end>
+								<label id="test" for="offline">$msg.get("OFFLINE_LABEL")</label>
+							</div>
+	
+						    <p><strong>$msg.get("PROPAGATE_SUBSCRIBE"): </strong></p>
+						    <div>
+						    	<input type="radio" id="OnDemand" name="subscribeStrategy" value="OnDemand" #if($ptemp.subscribeStrategy=="OnDemand") checked #end> 
+								<label for="OnDemand">$msg.get("ONDEMAND_LABEL")</label>&nbsp;&nbsp;&nbsp;&nbsp;
+								<input type="radio" id="OnClose" name="subscribeStrategy" value="OnClose" #if($ptemp.subscribeStrategy=="OnClose") checked #end> 
+								<label for="OnClose">$msg.get("ONCLOSE_LABEL")</label>&nbsp;&nbsp;&nbsp;&nbsp;
+								<input type="radio" id="OnSchedule" name="subscribeStrategy" value="OnSchedule" #if($ptemp.subscribeStrategy=="OnSchedule") checked #end> 
+								<label for="OnSchedule">$msg.get("ONSCHEDULE_LABEL")</label>&nbsp;&nbsp;
+								<select name="time" >
+								<!--	<option disabled selected value>select time</option> -->
+					        		<option value="00:00 AM" #if($ptemp.scheduleTime=="00:00 AM") selected #end>00:00 AM</option>
+					        		<option value="06:00 AM" #if($ptemp.scheduleTime=="06:00 AM") selected #end>06:00 AM</option>
+					        		<option value="00:00 PM" #if($ptemp.scheduleTime=="00:00 PM") selected #end>00:00 PM</option>
+					        		<option value="06:00 PM" #if($ptemp.scheduleTime=="06:00 PM") selected #end>06:00 PM</option>
+					    		</select>	
+						    </div>
+	
+						    <input type="submit" value="$msg.get("SUBMIT_BUTTON")"  style="float: right;">
+  						</fieldset>
+					</form>	
+				#end
+				</fieldset>
+				</br>
+			#end
+		#end
+  							
+#end

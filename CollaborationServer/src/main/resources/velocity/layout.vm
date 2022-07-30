@@ -1,0 +1,52 @@
+#macro(mainLayout)
+<html>
+<head>
+    <title>$msg.get("COMMON_TITLE")</title>
+    <link rel="stylesheet" href="/main.css">
+    <link rel="icon" href="/favicon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/index"><img id="logo" src="/img/logo.png" alt="Emf.cloud CS"></a>
+            <ul id="chooseLanguage">
+                <form>
+                    <li>
+                        <button name="locale" value="fr" style="background-image: url(/img/france.png);"></button>
+                    </li>
+                    <li>
+                        <button name="locale" value="de" style="background-image: url(/img/german.png);"></button>
+                    </li> 
+                    <li>
+                        <button name="locale" value="en" style="background-image: url(/img/english.png);"></button>
+                    </li>
+                </form>
+            </ul>
+            <ul id="menu">
+<!--                <li><a href="/profile">$msg.get("COMMON_NAV_PROFILE")</a></li> -->
+                #if($currentUser)
+                	<li><a href="/profile">$currentUser</a></li>
+                    <li>
+                        <form method="post" action="/logout">
+                            <button id="logout">$msg.get("COMMON_NAV_LOGOUT")</button>
+                        </form>
+                    </li>
+                #else
+                	<li><a href="/profile">$msg.get("COMMON_NAV_PROFILE")</a></li>
+                    <li><a href="/login">$msg.get("COMMON_NAV_LOGIN")</a></li>
+                #end
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div id="content">
+            $bodyContent
+        </div>
+    </main>
+    <footer>
+        $msg.get("COMMON_FOOTER_TEXT")
+    </footer>
+</body>
+</html>
+#end

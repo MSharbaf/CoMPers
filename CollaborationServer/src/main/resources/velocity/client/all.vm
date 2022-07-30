@@ -1,0 +1,34 @@
+#parse("/velocity/layout.vm")
+#@mainLayout()
+<h1>$msg.get("CLIENTS_HEADING_ALL")</h1>
+<div class="row row-3">
+
+	#if($currentRole=="admin")
+	    #foreach($client in $clients)
+	        <div class="col">
+	<!--            <a class="card" href="http://$client.clientAddress" target="_blank">  -->
+	            <a class="card" href="/clients/$client.clientID" target="_blank">
+	                <div class="cardCover">
+	                    <img src="/img/EMFCloud.JPG" alt="$client.clientID">
+	                </div>
+	                $msg.get("CLIENTS_CAPTION", $client.clientID, $client.serverAddress, $client.creator)
+	            </a>
+	        </div>
+	    #end
+	#elseif($currentRole=="designer")
+		#foreach($client in $clients)
+			#if($client.creator==$currentUser)			
+		        <div class="col">
+		<!--            <a class="card" href="http://$client.clientAddress" target="_blank">  -->
+		            <a class="card" href="/clients/$client.clientID" target="_blank">
+		                <div class="cardCover">
+		                    <img src="/img/EMFCloud.JPG" alt="$client.clientID">
+		                </div>
+		                $msg.get("CLIENTS_CAPTION", $client.clientID, $client.serverAddress, $client.creator)
+		            </a>
+		        </div>
+		    #end
+	    #end
+	#end
+</div>
+#end

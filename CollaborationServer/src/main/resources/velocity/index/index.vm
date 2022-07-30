@@ -1,0 +1,24 @@
+#parse("/velocity/layout.vm")
+#@mainLayout()
+<h1>$msg.get("INDEX_HEADING")</h1>
+<h2>$msg.get("INDEX_REGISTERED_USERS", $users.size())</h2>
+<ul>
+    #foreach($user in $users)
+        <li>$user</li>
+    #end
+</ul>
+<p>$msg.get("INDEX_PASSWORD_INFO")</p>
+
+</br>
+
+<div class="row row">
+	<div class="col">
+		<div class="cardCover">
+        	<img src="/img/CSArch.JPG" alt=$msg.get("INDEX_FIGURE_ALT1")>
+        </div>
+        <p align="center">$msg.get("INDEX_FIGURE_INFO")</p>	
+    </div>
+</div>
+
+
+#end

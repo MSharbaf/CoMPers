@@ -1,0 +1,26 @@
+#parse("/velocity/layout.vm")
+#@mainLayout()
+
+<form id="loginForm" method="post" enctype="multipart/form-data">
+	#if($registerationFailed)
+        <p class="bad notification">$msg.get("ADDRESOURCE_FAILED")</p>
+    #elseif($registerationSucceeded)
+        <p class="good notification">$msg.get("ADDRESOURCE_SUCCEEDED")</p>
+    #end
+    
+	<h1>$msg.get("ADDRESOURCE_HEADING")</h1>
+
+    <p>$msg.get("ADDRESOURCE_INSTRUCTIONS")</p>
+    <label><strong>$msg.get("RESOURCE_ID"): </strong></label>
+    <input type="text" name="resourceID" placeholder="$msg.get("RESOURCE_ID")" value="" required>
+    <label><strong>$msg.get("RESOURCE_PROJECT_NAME"): </strong></label>
+    <input type="text" name="projectName" placeholder="$msg.get("RESOURCE_PROJECT_NAME")" value="" required>
+    <label><strong>$msg.get("ECORE_ADDRESS"): </strong></label>
+    <input type="file" name="ecoreAddress" placeholder="$msg.get("ECORE_ADDRESS")" accept=".ecore" value="" required>
+    <label><strong>$msg.get("ENOTATION_ADDRESS"): </strong></label>
+    <input type="file" name="enotationAddress" placeholder="$msg.get("ENOTATION_ADDRESS")" accept=".enotation" value="" required>
+    <input type="submit" value="$msg.get("SUBMIT_BUTTON")">
+</form>
+
+
+#end

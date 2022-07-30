@@ -1,0 +1,70 @@
+#parse("/velocity/layout.vm")
+#@mainLayout()
+
+    #if($client)
+	<form id="loginForm" method="post">
+		#if($registerationFailed)
+	        <p class="bad notification">$msg.get("UPDATECLIENT_FAILED")</p>
+	    #elseif($registerationSucceeded)
+	        <p class="good notification">$msg.get("UPDATECLIENT_SUCCEEDED", $client.clientID)</p>
+	    #end
+    
+		<h1>$msg.get("UPDATECLIENT_HEADING")</h1>
+	
+	    <p>$msg.get("UPDATECLIENT_INSTRUCTIONS")</p>
+<!--	    <input type="hidden" name="clientID" value=$client.clientID> -->
+	    <label><strong>$msg.get("CLIENT_ID"): </strong> </label>
+	    <input type="text" name="clientID" placeholder=$client.clientID value=$client.clientID readonly style="color:#888;"> 
+	    <label><strong>$msg.get("CREATOR"): </strong> </label>
+	    <input type="text" name="creator" placeholder=$client.creator value=$client.creator readonly style="color:#888;">
+	    
+	    <label><strong>$msg.get("CLIENT_ADDRESS"): </strong></label>
+	    <input type="text" name="clientAddress" placeholder="$msg.get("CLIENT_ADDRESS")" value=$client.clientAddress required>
+	    <label><strong>$msg.get("SERVER_ADDRESS"): </strong></label>
+	    <input type="text" name="serverAddress" placeholder="$msg.get("SERVER_ADDRESS")" value=$client.serverAddress required>
+	    </br>
+	    <p><strong>$msg.get("ADDCLIENT_DEFAULT_PUBLISH"): </strong></p>
+	    <div>
+	    	<input type="radio" id="online" name="defaultPublish" value="Online" #if($client.defaultPublish=="Online") checked #end>
+			<label id="test" for="online">$msg.get("ONLINE_LABEL")</label>	
+			<input type="radio" id="offline" name="defaultPublish" value="Offline" #if($client.defaultPublish=="Offline") checked #end>
+			<label id="test" for="offline">$msg.get("OFFLINE_LABEL")</label>
+		</div>
+	    </br>
+	    <p><strong>$msg.get("ADDCLIENT_DEFAULT_SUBSCRIBE"): </strong></p>
+	    <div>
+	    	<input type="radio" id="OnDemand" name="defaultSubscribe" value="OnDemand" #if($client.defaultSubscribe=="OnDemand") checked #end> 
+			<label for="OnDemand">$msg.get("ONDEMAND_LABEL")</label>
+			<input type="radio" id="OnClose" name="defaultSubscribe" value="OnClose" #if($client.defaultSubscribe=="OnClose") checked #end> 
+			<label for="OnClose">$msg.get("ONCLOSE_LABEL")</label>
+			<div class="row row-2">
+				<input type="radio" id="OnSchedule" name="defaultSubscribe" value="OnSchedule" #if($client.defaultSubscribe=="OnSchedule") checked #end> 
+				<label for="OnSchedule">$msg.get("ONSCHEDULE_LABEL")</label>
+				<select name="time" value="00:00 AM">
+	        		<option value="00:00 AM" #if($client.scheduleTime=="00:00 AM") selected #end>00:00 AM</option>
+	        		<option value="06:00 AM" #if($client.scheduleTime=="06:00 AM") selected #end>06:00 AM</option>
+	        		<option value="00:00 PM" #if($client.scheduleTime=="00:00 PM") selected #end>00:00 PM</option>
+	        		<option value="06:00 PM" #if($client.scheduleTime=="06:00 PM") selected #end>06:00 PM</option>
+	    		</select>	
+	    	</div>
+	    </div>
+	    </br>
+	    
+        <p><strong>$msg.get("ADDCLIENT_SELECT_RESOURCES"): </strong></p>
+	    <div>
+			#foreach($conflictRule in $resourceList)
+	    		<input type="checkbox" id="rsc" name="cdrule" value="$conflictRule.ruleName"  #if($conflictRule.ruleChecked) checked #end>
+				<label for="rsc"> $conflictRule.ruleName <small>(by $conflictRule.ruleFile)</small> </label>
+		    #end
+		</div>
+	    
+	    </br>
+	    </br>
+	    <input type="submit" value="$msg.get("SUBMIT_BUTTON")">
+	</form>
+
+	#else
+    	<h1>$msg.get("CLIENTS_CLIENT_NOT_FOUND")</h1>
+    #end
+
+#end

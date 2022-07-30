@@ -1,0 +1,40 @@
+#parse("/velocity/layout.vm")
+#@mainLayout()
+
+    #if($user)
+	<form id="loginForm" method="post">
+		#if($registerationFailed)
+	        <p class="bad notification">$msg.get("UPDATEUSER_FAILED")</p>
+	    #elseif($registerationSucceeded)
+	        <p class="good notification">$msg.get("UPDATEUSER_SUCCEEDED", $user.username)</p>
+	    #end
+    
+		<h1>$msg.get("UPDATEUSER_HEADING")</h1>
+	
+	    <p>$msg.get("UPDATEUSER_INSTRUCTIONS")</p>
+
+	    <label><strong>$msg.get("USER_USERNAME"): </strong> </label>
+	    <input type="text" name="username" placeholder=$user.username value=$user.username readonly style="color:#888;"> 
+	    
+	    <label><strong>$msg.get("USER_FIRSTNAME"): </strong></label>
+	    <input type="text" name="firstname" placeholder="$msg.get("USER_FIRSTNAME")" value=$user.firstname required>
+	    <label><strong>$msg.get("USER_LASTNAME"): </strong></label>
+	    <input type="text" name="lastname" placeholder="$msg.get("USER_LASTNAME")" value=$user.lastname required>
+
+	    </br>
+	    <p><strong>$msg.get("USER_ROLE"): </strong></p>
+	    <div>
+	    	<input type="radio" id="Admin" name="role" value="admin" #if($user.role=="admin") checked #end>
+			<label id="test" for="Admin">$msg.get("ADMIN_LABEL")</label>	
+			<input type="radio" id="Designer" name="role" value="designer" #if($user.role=="designer") checked #end>
+			<label id="test" for="Designer">$msg.get("DESIGNER_LABEL")</label>
+		</div>
+	    </br>
+	    <input type="submit" value="$msg.get("SUBMIT_BUTTON")">
+	</form>
+
+	#else
+    	<h1>$msg.get("USERS_NOT_FOUND")</h1>
+    #end
+
+#end

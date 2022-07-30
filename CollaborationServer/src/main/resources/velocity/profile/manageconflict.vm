@@ -1,0 +1,260 @@
+#parse("/velocity/layout.vm")
+#@mainLayout()
+
+	#if($currentRole=="admin")
+		<h1>$msg.get("CM_HEADING")</h1>
+
+		#if($registerationFailed)
+	        <p class="bad notification">$msg.get("CM_FAILED")</p>
+	    #elseif($registerationSucceeded)
+	        <p class="good notification">$msg.get("CM_SUCCEEDED")</p>
+	    #end
+
+
+<!--	    <p>$msg.get("CM_INSTRUCTIONS")</p> -->
+	    
+	    
+			<fieldset>
+			<legend><strong> $msg.get("CONF_SPECIFICATION_PART_TITLE"): </strong> </legend>
+		
+				<fieldset>
+				<legend><strong> $msg.get("CONFLICT_ADDITION_TITLE"): </strong> </legend>
+			    	<form name="myform" method="post" enctype="multipart/form-data">
+					    <p><strong>$msg.get("CONFLICT_ADDITION_INSTRUCTIONS"):</strong></p>
+				 	   	<label><strong>$msg.get("CONF_PATTERN_RULE_NAME"): </strong></label>
+					    <input type="text" name="ruleName" placeholder="$msg.get("CONF_PATTERN_RULE_NAME")" value="" required>
+					    <br>
+					    <label><strong>$msg.get("CONF_PATTERN_RULE_FILE"): </strong></label>
+				    	<input type="file" name="ruleFile" placeholder="$msg.get("CONF_PATTERN_RULE_FILE")" accept=".cpl" value="" required>
+				    	<br>
+
+					    <button type="submit" name="Submit" value="PatternDefinition" style="float: right;">$msg.get("SUBMIT_BUTTON") </button> 
+					</form>
+			    </fieldset>
+			    
+			    <br>
+			    
+			    <fieldset>
+				<legend><strong> $msg.get("SPECIFIED_CONFLICT_TITLE"): </strong> </legend>
+					<form name="myfor" method="post">
+			<!--			<p><strong>$msg.get("RULE_SELECTION_INSTRUCTIONS")</strong></p>		  -->  
+				    
+				    	<div>				    		
+							<ul>
+							  <li>Cyclic Inheritance</li>
+							  <li>Pull-Up Method</li>
+							  <li>Reference Dangling</li>
+							</ul>  
+				    	</div>
+				    
+			<!--	    	<div>
+							#foreach($conflictRule in $CManagement.conflicRules)
+					    		<input type="checkbox" id="cdr" name="cdrule" value="$conflictRule.ruleName"  #if($conflictRule.ruleChecked) checked #end>
+								<label for="cdr"> $conflictRule.ruleName</label><br>
+						    #end
+				   		</div>
+			-->	    
+				   			    	
+			    	</form>
+				</fieldset>
+ 
+			</fieldset>
+	    
+	    	    
+	    <br>
+	    <br>
+
+		<fieldset>
+		<legend><strong> $msg.get("CONF_DETECTION_PART_TITLE"): </strong> </legend>
+		    <form name="myform" method="post">
+				<fieldset>
+				<legend><strong> $msg.get("CONF_DETECTION_TITLE"): </strong></legend>
+		
+				    <p><strong>$msg.get("CONF_DETECTION_INS"): </strong></p>
+				    <div>
+				    	<input type="radio" id="Det1" name="detectionStrategy" value="Pattern Matching" #if($CManagement.detectionStrategy=="Pattern Matching") checked #end> 
+						<label for="Det1">Pattern Matching</label>&nbsp;&nbsp;&nbsp;&nbsp;
+						<input type="radio" id="Det2" name="detectionStrategy" value="Constraint Violation" #if($CManagement.detectionStrategy=="Constraint Violation") checked #end disabled="disabled"> 
+						<label for="Det2">Constraint Violation</label>&nbsp;&nbsp;&nbsp;&nbsp;
+				    	<input type="radio" id="Det3" name="detectionStrategy" value="Change Overlapping" #if($CManagement.detectionStrategy=="Change Overlapping") checked #end> 
+						<label for="Det3">Change Overlapping</label>&nbsp;&nbsp;&nbsp;&nbsp;
+						<input type="radio" id="Det4" name="detectionStrategy" value="Formal Method" #if($CManagement.detectionStrategy=="Formal Method") checked #end disabled="disabled"> 
+						<label for="Det4">Formal Method</label>&nbsp;&nbsp;					    	
+				    </div>
+				    
+				    <button type="submit" name="Submit" value="DecStrategy" style="float: right;">$msg.get("SUBMIT_BUTTON") </button> 
+				</fieldset>
+			</form>	
+		    
+ 
+		    
+			#if($CManagement.detectionStrategy=="Pattern Matching")
+				<fieldset>
+				<legend><strong> $msg.get("CONF_DETECTION_RULE_TITLE"): </strong> </legend>
+			
+					<fieldset>
+					<legend><strong> $msg.get("RULE_ADDITION_TITLE"): </strong> </legend>
+				    	<form name="myform" method="post" enctype="multipart/form-data">
+						    <p><strong>$msg.get("DET_RULE_ADDITION_INSTRUCTIONS"):</strong></p>
+					 	   	<label><strong>$msg.get("CONF_DETECTION_RULE_NAME"): </strong></label>
+						    <input type="text" name="ruleName" placeholder="$msg.get("CONF_DETECTION_RULE_NAME")" value="" required>
+						    <br>
+						    <label><strong>$msg.get("CONF_DETECTION_RULE_FILE"): </strong></label>
+					    	<input type="file" name="ruleFile" placeholder="$msg.get("CONF_DETECTION_RULE_FILE")" accept=".evl,.epl" value="" required>
+					    	<br>
+	
+						    <button type="submit" name="Submit" value="ConfRuleDefinition" style="float: right;">$msg.get("SUBMIT_BUTTON") </button> 
+						</form>
+				    </fieldset>
+				    
+				    <br>
+				    
+				    <fieldset>
+					<legend><strong> $msg.get("RULE_SELECTION_TITLE"): </strong> </legend>
+						<form name="myfor" method="post">
+							<p><strong>$msg.get("RULE_SELECTION_INSTRUCTIONS")</strong></p>		    
+					    
+					    	<div>
+								#foreach($conflictRule in $CManagement.conflicRules)
+						    		<input type="checkbox" id="cdr" name="cdrule" value="$conflictRule.ruleName"  #if($conflictRule.ruleChecked) checked #end>
+									<label for="cdr"> $conflictRule.ruleName</label><br>
+							    #end
+					   		</div>
+					    
+					   
+						    <button type="submit" name="Submit" value="ConfRuleSelection" style="float: right;">$msg.get("SAVE_BUTTON") </button> 
+				    	
+				    	</form>
+					</fieldset>
+	 
+				</fieldset>
+			#end		    
+		</fieldset>
+	    
+	    <br>
+	    <br>
+
+
+		<fieldset>
+		<legend><strong> $msg.get("CONF_RESOLUTION_PART_TITLE"): </strong> </legend>
+
+			#if($CManagement.detectionStrategy=="Change Overlapping")
+				<fieldset>
+				<legend><strong> $msg.get("CONF_RESOLUTION_TITLE"): </strong></legend>
+		    		<form  method="post">
+				    	<p><strong>$msg.get("CONF_RESOLUTION_INS"): </strong></p>
+				    	<div>
+				    		<input type="radio" id="Res1" name="resolutionStrategy" value="Abort Change" #if($CManagement.resolutionStrategy=="Abort Change") checked #end> 
+							<label for="Res1">Abort Change</label>&nbsp;&nbsp;&nbsp;&nbsp;
+							<input type="radio" id="Res2" name="resolutionStrategy" value="Latest Operation Wins" #if($CManagement.resolutionStrategy=="Latest Operation Wins") checked #end> 
+							<label for="Res2">Latest Operation Wins</label>&nbsp;&nbsp;&nbsp;&nbsp;
+							<input type="radio" id="Res3" name="resolutionStrategy" value="Highest Priority Wins" #if($CManagement.resolutionStrategy=="Highest Priority Wins") checked #end> 
+							<label for="Res3">Highest Priority Wins</label>&nbsp;&nbsp;&nbsp;&nbsp;
+							<input type="radio" id="Res4" name="resolutionStrategy" value="RL-Based Resolution" #if($CManagement.resolutionStrategy=="RL-Based Resolution") checked #end> 
+							<label for="Res4">RL-Based Resolution</label>&nbsp;&nbsp;
+				    	</div>
+				    
+				    	<button type="submit" name="Submit" value="ResStrategy" style="float: right;">$msg.get("SUBMIT_BUTTON") </button> 
+					</form>
+				</fieldset>
+				
+				
+					
+				#if($CManagement.resolutionStrategy=="Highest Priority Wins")
+					<fieldset>
+					<legend><strong> $msg.get("PRIORITY_DEFINITION_TITLE"): </strong> </legend>
+			    		<form  method="post">
+					    	<p><strong>$msg.get("PRIORITY_DEFINITION_INSTRUCTIONS")</strong></p>
+					    	<div>
+								#foreach($clientsPriority in $CManagement.clientsPriority)
+						 	   		<label><strong>$clientsPriority.clientID: </strong></label>
+								    <input type="text" name="cPriority" placeholder="$clientsPriority.priority" value="$clientsPriority.priority" required>
+						    		<br>
+						    	#end
+					    	</div>
+					    	<button type="submit" name="Submit" value="ClientPriority" style="float: right;">$msg.get("SAVE_BUTTON") </button> 
+						</form>
+			    	</fieldset>
+				#end
+		
+				
+				
+			#end
+				
+			<br>	
+			
+			#if($CManagement.detectionStrategy=="Pattern Matching")
+				<fieldset>
+				<legend><strong> $msg.get("CONF_RESOLUTION_TITLE"): </strong></legend>
+		    		<form  method="post">
+				    	<p><strong>$msg.get("CONF_RESOLUTION_INS"): </strong></p>
+				    	<div>
+				    		<input type="radio" id="Res1" name="resolutionStrategy" value="Abort Change" #if($CManagement.resolutionStrategy=="Abort Change") checked #end> 
+							<label for="Res1">Abort Change</label>&nbsp;&nbsp;&nbsp;&nbsp;
+							<input type="radio" id="Res5" name="resolutionStrategy" value="Pattern-Based Resolution" #if($CManagement.resolutionStrategy=="Pattern-Based Resolution") checked #end> 
+							<label for="Res5">Pattern-Based Resolution</label>&nbsp;&nbsp;  
+				    	</div>
+				    
+				    	<button type="submit" name="Submit" value="ResStrategy" style="float: right;">$msg.get("SUBMIT_BUTTON") </button> 
+					</form>
+				</fieldset>
+				
+				<br> 
+				
+				#if($CManagement.resolutionStrategy=="Pattern-Based Resolution")
+					<fieldset>
+					<legend><strong> $msg.get("RES_DETECTION_RULE_TITLE"): </strong> </legend>
+			
+						<fieldset>
+						<legend><strong> $msg.get("RULE_ADDITION_TITLE"): </strong> </legend>
+					    	<form name="myform" method="post" enctype="multipart/form-data">
+							    <p><strong>$msg.get("RES_RULE_ADDITION_INSTRUCTIONS"):</strong></p>
+						 	   	<label><strong>$msg.get("CONF_DETECTION_RULE_NAME"): </strong></label>
+							    <input type="text" name="ruleName" placeholder="$msg.get("CONF_DETECTION_RULE_NAME")" value="" required>
+						    	<br>
+						    	<label><strong>$msg.get("CONF_DETECTION_RULE_FILE"): </strong></label>
+					    		<input type="file" name="ruleFile" placeholder="$msg.get("CONF_DETECTION_RULE_FILE")" accept=".evl,.eol" value="" required>
+					   		 	<br>
+	
+						 	   <button type="submit" name="Submit" value="ResRuleDefinition" style="float: right;">$msg.get("SUBMIT_BUTTON") </button> 
+							</form>
+				 	   	</fieldset>
+    				
+				   		<br>
+				    
+				  	  	<fieldset>
+						<legend><strong> $msg.get("RULE_SELECTION_TITLE"): </strong> </legend>
+							<form name="myfor" method="post">
+								<p><strong>$msg.get("RULE_SELECTION_INSTRUCTIONS")</strong></p>		    
+					   
+					  		 	<div>
+									#foreach($resolutionRule in $CManagement.resolutionRules)
+						  	  			<input type="checkbox" id="cdr" name="cdrule" value="$resolutionRule.ruleName"  #if($resolutionRule.ruleChecked) checked #end>
+										<label for="cdr"> $resolutionRule.ruleName</label><br>
+							   		#end
+					   			</div>
+					    
+					   
+						    	<button type="submit" name="Submit" value="ResRuleSelection" style="float: right;">$msg.get("SAVE_BUTTON") </button> 
+				    	
+				    		</form>
+						</fieldset>
+					
+					</fieldset>
+					
+				#end	
+					
+			#end
+			
+			
+		</fieldset>
+
+
+	    
+	    
+	#else
+		<h1>$msg.get("ERROR_404_NOT_FOUND")</h1>
+	#end
+   
+
+#end

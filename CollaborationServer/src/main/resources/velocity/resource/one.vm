@@ -1,0 +1,21 @@
+#parse("/velocity/layout.vm")
+#@mainLayout()
+    #if($resource)
+    <h1><strong>$msg.get("RESOURCE_ID"): </strong> $resource.resourceID</h1>
+    <h2><strong>$msg.get("RESOURCE_PROJECT_NAME"): </strong> $resource.projectName</h2>
+<!--    <h2><strong>$msg.get("ECORE_ADDRESS"): </strong> <a href="../upload/$resource.projectName/$resource.ecoreAddress"> $resource.ecoreAddress</a></h2> -->
+    <h2><strong>$msg.get("ECORE_ADDRESS"): </strong> <a href="#"> $resource.ecoreAddress</a></h2>
+    <h2><strong>$msg.get("ENOTATION_ADDRESS"): </strong> <a href="#" target="_blank">$resource.enotationAddress</a></h2>
+    <h2><strong>$msg.get("CREATOR"): </strong> $resource.creator</h2>
+    <h2><strong>$msg.get("LAST_UPDATE"): </strong> $resource.lastUpdate</h2>
+<!--    <h2><strong>Creator: </strong> <a href="/profiles/$resource.creator" target="_blank"> $resource.creator</h2> -->
+
+    <div class="card">
+        <div class="cardCover">
+            <img src="/img/CSFinal.JPG" alt="$resource.sourceID">
+        </div>
+    </div>
+    #else
+    <h1>$msg.get("RESOURCES_CLIENT_NOT_FOUND")</h1>
+    #end
+#end

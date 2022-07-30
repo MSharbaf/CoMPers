@@ -1,0 +1,78 @@
+#parse("/velocity/layout.vm")
+#@mainLayout()
+
+    <h1>$msg.get("PROFILE_HEADING")</h1>
+    <p class="good notification"> $msg.get("PROFILE_INSTRUCTIONS", $currentUser)</p>
+
+
+	<div class="row row-3">
+        <div class="col">
+            <a class="card" href="/profile/addclient">
+                <div class="cardCover">
+                    <img src="/img/AddClient.png" alt=$msg.get("PROFILE_FIGURE_ALT1")>
+                </div>
+                <p><strong>$msg.get("PROFILE_ITEM1")</strong></p>
+            </a>
+        </div>
+        <div class="col">
+            <a class="card" href="/clients">
+                <div class="cardCover">
+                    <img src="/img/AllClients.png" alt=$msg.get("PROFILE_FIGURE_ALT2")>
+                </div>
+                <p><strong>$msg.get("PROFILE_ITEM2")</strong></p>
+            </a>
+        </div>
+        <div class="col">
+            <a class="card" href="/profile/propagate">
+                <div class="cardCover">
+                    <img src="/img/propagate.jpg" alt=$msg.get("PROFILE_FIGURE_ALT3")>
+                </div>
+                <p><strong>$msg.get("PROFILE_ITEM3")</strong></p>
+            </a>
+        </div>
+        <div class="col">
+            <a class="card" href="/profile/addresource">
+                <div class="cardCover">
+                    <img src="/img/NewResource.png" alt=$msg.get("PROFILE_FIGURE_ALT4")>
+                </div>
+                <p><strong>$msg.get("PROFILE_ITEM4")</strong></p>
+            </a>
+        </div>
+        <div class="col">
+            <a class="card" href="/resources">
+                <div class="cardCover">
+                    <img src="/img/AllResources.png" alt=$msg.get("PROFILE_FIGURE_ALT5")>
+                </div>
+                <p><strong>$msg.get("PROFILE_ITEM5")</strong></p>
+            </a>
+        </div>
+        #if($currentRole=="admin")
+        <div class="col">
+            <a class="card" href="/profile/manageconflict">
+                <div class="cardCover">
+                    <img src="/img/ConflictManagement.png" alt=$msg.get("PROFILE_FIGURE_ALT6")>
+                </div>
+                <p><strong>$msg.get("PROFILE_ITEM6")</strong></p>
+            </a>
+        </div>
+        <div class="col">
+            <a class="card" href="/profile/adduser">
+                <div class="cardCover">
+                    <img src="/img/AddUser.png" alt=$msg.get("PROFILE_FIGURE_ALT7")>
+                </div>
+                <p><strong>$msg.get("PROFILE_ITEM7")</strong></p>
+            </a>
+        </div>
+        <div class="col">
+            <a class="card" href="/users">
+                <div class="cardCover">
+                    <img src="/img/AllUsers.png" alt=$msg.get("PROFILE_FIGURE_ALT8")>
+                </div>
+                <p><strong>$msg.get("PROFILE_ITEM8")</strong></p>
+            </a>
+        </div>
+        #end
+	</div>
+
+
+#end

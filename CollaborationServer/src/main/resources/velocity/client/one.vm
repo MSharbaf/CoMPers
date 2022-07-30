@@ -1,0 +1,40 @@
+#parse("/velocity/layout.vm")
+#@mainLayout()
+    #if($client)
+    
+		<fieldset>
+		<legend><strong> $msg.get("CLIENT_INFO"): </strong></legend>
+	    
+		    <h1><strong>$msg.get("CLIENT_ID"): </strong> $client.clientID</h1>
+		    <h2><strong>$msg.get("CLIENT_ADDRESS"): </strong> <a href="http://$client.clientAddress" target="_blank">$client.clientAddress</a></h2>
+		    <h2><strong>$msg.get("SERVER_ADDRESS"): </strong> <a href="http://$client.serverAddress/api/v1/server/ping" target="_blank">$client.serverAddress</a></h2>
+		    <h2><strong>$msg.get("CREATOR"): </strong> $client.creator</h2>
+			<h2><strong>$msg.get("ADDCLIENT_DEFAULT_PUBLISH"): </strong> $client.defaultPublish</h2>
+			<h2><strong>$msg.get("ADDCLIENT_DEFAULT_SUBSCRIBE"): </strong> $client.defaultSubscribe #if($client.defaultSubscribe=="OnSchedule") " at " $client.scheduleTime #end</h2>
+			
+			
+			<h2><strong>$msg.get("ADDCLIENT_SELECTED_RESOURCES"): </strong></h2>
+			#foreach($temp in $client.resourceList)
+			  <h2><strong> &nbsp;&nbsp; - </strong> $temp</h2>
+			#end
+			
+			
+			<a href="/clients/$client.clientID/update">
+			    <input type="submit" value="$msg.get("UPDATE_BUTTON")" style="float: right;"> 
+			</a>
+		</fieldset>
+
+
+
+    
+<!--    <h2><strong>Creator: </strong> <a href="/profiles/$client.creator" target="_blank"> $client.creator</h2> -->
+
+    <div class="card">
+        <div class="cardCover">
+            <img src="/img/CSFinal.JPG" alt="$client.clientID">
+        </div>
+    </div>
+    #else
+   	 	<h1>$msg.get("CLIENTS_CLIENT_NOT_FOUND")</h1>
+    #end
+#end

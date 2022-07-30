@@ -1,0 +1,16 @@
+#parse("/velocity/layout.vm")
+#@mainLayout()
+<h1>$msg.get("RESOURCES_HEADING_ALL")</h1>
+<div class="row row-3">
+    #foreach($resource in $resources)
+        <div class="col">
+            <a class="card" href="/resources/$resource.resourceID" target="_blank">
+                <div class="cardCover">
+                    <img src="/img/Resource.png" alt="$resource.resourceID">
+                </div>
+                $msg.get("RESOURCES_CAPTION", $resource.resourceID, $resource.ecoreAddress, $resource.creator)
+            </a>
+        </div>
+    #end
+</div>
+#end

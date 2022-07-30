@@ -1,0 +1,36 @@
+#parse("/velocity/layout.vm")
+#@mainLayout()
+
+<form autocomplete="off" id="loginForm" method="post">
+	#if($registerationFailed)
+        <p class="bad notification">$msg.get("ADDUSER_FAILED")</p>
+    #elseif($registerationSucceeded)
+        <p class="good notification">$msg.get("ADDUSER_SUCCEEDED")</p>
+    #end
+    
+	<h1>$msg.get("ADDUSER_HEADING")</h1>
+
+    <p>$msg.get("ADDUSER_INSTRUCTIONS")</p>
+    <label><strong>$msg.get("USER_USERNAME"): </strong></label>
+    <input autocomplete="false" type="text" name="newusername" placeholder="$msg.get("USER_USERNAME")" value="" required>
+    <label><strong>$msg.get("USER_FIRSTNAME"): </strong></label>
+    <input type="text" name="firstname" placeholder="$msg.get("USER_FIRSTNAME")" value="" required>
+    <label><strong>$msg.get("USER_LASTNAME"): </strong></label>
+    <input type="text" name="lastname" placeholder="$msg.get("USER_LASTNAME")" value="" required>
+    <label>$msg.get("LOGIN_LABEL_PASSWORD")</label>
+    <input type="password" name="newpassword" placeholder="$msg.get("LOGIN_LABEL_PASSWORD")" value="" required>
+    
+    </br>
+    <p><strong>$msg.get("USER_ROLE"): </strong></p>
+    <div>
+    	<input type="radio" id="Admin" name="role" value="admin" #if($user.role=="admin") checked #end>
+		<label id="test" for="Admin">$msg.get("ADMIN_LABEL")</label>	
+		<input type="radio" id="Designer" name="role" value="designer" #if($user.role=="designer") checked #end>
+		<label id="test" for="Designer">$msg.get("DESIGNER_LABEL")</label>
+	</div>
+    </br>
+    </br>
+    <input type="submit" value="$msg.get("SUBMIT_BUTTON")">
+</form>
+
+#end

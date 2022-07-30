@@ -1,0 +1,4 @@
+#parse("/velocity/layout.vm")
+#@mainLayout()
+<h2>$msg.get("ERROR_404_NOT_FOUND")</h2>
+#end

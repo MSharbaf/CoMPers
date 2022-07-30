@@ -1,0 +1,27 @@
+#parse("/velocity/layout.vm")
+#@mainLayout()
+    #if($user)
+    
+		<fieldset>
+		<legend><strong> $msg.get("USERS_INFO"): </strong></legend>
+	    
+		    <h1><strong>$msg.get("USER_USERNAME"): </strong> $user.username</h1>
+		    <h2><strong>$msg.get("USER_FIRSTNAME"): </strong> $user.firstname</a></h2>
+		    <h2><strong>$msg.get("USER_LASTNAME"): </strong> $user.lastname</a></h2>
+		    <h2><strong>$msg.get("USER_ROLE"): </strong> $user.role</h2>
+		
+			<a href="/users/$user.username/update">
+			    <input type="submit" value="$msg.get("UPDATE_BUTTON")" style="float: right;"> 
+			</a>
+		</fieldset>
+
+
+    <div class="card">
+        <div class="cardCover">
+            <img src="/img/CSFinal.JPG" alt="$user.username">
+        </div>
+    </div>
+    #else
+   	 	<h1>$msg.get("USERS_NOT_FOUND")</h1>
+    #end
+#end
