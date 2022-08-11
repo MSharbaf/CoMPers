@@ -1,7 +1,6 @@
 package app.propagation;
 
 import java.net.URI;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.eclipse.jetty.client.HttpClient;
@@ -9,11 +8,9 @@ import org.eclipse.jetty.websocket.api.Session;
 import org.eclipse.jetty.websocket.client.ClientUpgradeRequest;
 import org.eclipse.jetty.websocket.client.WebSocketClient;
 
-import com.google.gson.Gson;
 
 import app.Main;
 import app.client.ClientInfo;
-import app.util.SocketPacket;
 import app.util.WebSocketHandler;
 
 
@@ -44,13 +41,13 @@ public class SendOnCloseChangeThread implements Runnable  {
 	      
 		  for(ClientInfo c : Main.clientDao.getAllClients()) {
 			  if( (c.getClientID().equals(rID)==false) && (c.getResourceList().contains(rID)==true)) {
-				  if(Main.propagationDao.getPropagation(c.getClientID(), rID)==null) {
+				  if(Main.propagationDao.getPropagation(rID, c.getClientID())==null) {
 					  if(c.getdefaultSubscribe().equals("OnClose")) {
 						  System.out.println("Send One Change to " + c.getClientID());
 					      sendSocket(c.getClientID(), msg);
 					  }
 				  }
-				  else if(Main.propagationDao.getPropagation(c.getClientID(), rID).getsubscribeStrategy().equals("OnClose")){
+				  else if(Main.propagationDao.getPropagation(rID, c.getClientID()).getsubscribeStrategy().equals("OnClose")){
 					  System.out.println("Send One Change to " + c.getClientID());
 					  sendSocket(c.getClientID(), msg);
 				  }
@@ -66,7 +63,8 @@ public class SendOnCloseChangeThread implements Runnable  {
 	   
 	   public void sendSocket(String clientID, String message) {
 		   System.out.println("[Server-->SendOnCloseThread-->sendSocket] Call Socket Startted ... "); 
-			
+		   System.out.println("message is: " + message);
+		   
 			// Client protocol to be used
 		   HttpClient httpClient = new HttpClient();
 
@@ -79,15 +77,23 @@ public class SendOnCloseChangeThread implements Runnable  {
 		   try{	      		
 			   String destUri = null ; 
 	      		
-			   String serverAddress = Main.clientDao.getClientByClientID(clientID).serverAddress; 
-			   serverAddress = serverAddress.substring(0, serverAddress.indexOf(':'));
-			   destUri = "ws://" + serverAddress + ":6000/websocket" ;
-			   System.out.println("destUri for " + clientID + " is : " + destUri);
+//			   String serverAddress = Main.clientDao.getClientByClientID(clientID).serverAddress; 
+//			   serverAddress = serverAddress.substring(0, serverAddress.indexOf(':'));
+//			   destUri = "ws://" + serverAddress + ":6000/websocket" ;
+//			   System.out.println("destUri for " + clientID + " is : " + destUri);
 	      		
-			   if(clientID.equals("Client1"))
-				   destUri = "ws://localhost:6001/websocket";
-			   else if(clientID.equals("Client3"))
-				   destUri = "ws://localhost:6003/websocket";
+			   if(Main.localTest==true) {
+				   if(clientID.equals("Client1"))
+					   destUri = "ws://localhost:6001/websocket";
+				   else if(clientID.equals("Client3"))
+					   destUri = "ws://localhost:6003/websocket";
+			   }
+			   else {
+				   String clientAddress = Main.clientDao.getClientByClientID(clientID).getclientAddress();
+				   clientAddress = clientAddress.substring(0, clientAddress.indexOf(':'));      			
+				   destUri = "ws://" + clientAddress + ":6000/websocket";
+				   System.out.println("destUri is " + destUri);
+			   }
 	      		
 			   
 //	      		if(clientID.equals("Client1"))

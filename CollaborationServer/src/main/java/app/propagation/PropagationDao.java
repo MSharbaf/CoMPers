@@ -56,6 +56,14 @@ public class PropagationDao {
         return propagations.stream().filter(r -> r.resourceID.equals(resourceID) && r.clientID.equals(clientID)).findFirst().orElse(null);
     }
     
+    public Boolean exsitPropagation(String resourceID, String clientID) {
+    	for(Propagation p : this.propagations) {
+    		if(p.getResourceID().equals(resourceID) && p.getClientID().equals(clientID))
+    			return true ;
+    	}
+    	return false ; 
+    }
+    
     public Iterable<Propagation> getPropagationsByresourceID(String resourceID) {
     	List<Propagation> list = new ArrayList<Propagation>();
     	for(Propagation p : propagations)

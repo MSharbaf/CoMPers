@@ -41,6 +41,7 @@ import static io.javalin.apibuilder.ApiBuilder.post;
 
 public class Main {
 
+	public static Boolean localTest = false ; 
 
     // Declare dependencies
     public static ClientDao clientDao;
@@ -98,7 +99,7 @@ public class Main {
 //        
 //        cmanagementDao.updateCManagement("Highest Priority Wins", "Rule-Based Matching", cdList, cpList);
         
-        
+//        System.out.println("0) onClose Size is " + resourceDao.onCloseSize());
         
         userDao.readUsers();
         clientDao.readClients();
@@ -106,6 +107,8 @@ public class Main {
         propagationDao.readPropagations();
         cmanagementDao.readCManagement();
         elementInfoDao.readElements();
+        
+//        System.out.println("1) onClose Size is " + resourceDao.onCloseSize());
         
         
 //        Client c1 = new Client("Client1", "127.0.0.1:3000", "127.0.0.1:8081", "Mohammadreza") ; 
@@ -292,13 +295,21 @@ public class Main {
 		
 		resourceDao.updateOnClose(clientID, resourceID, true) ; 
 		
+		
+		System.out.println("resourceDao.isTrueOnClose(resourceID) is " + resourceDao.isTrueOnClose(resourceID));
+		if(changePropagationDao.getSizeOfOnClosedList(resourceID)>0)
+			System.out.println("changePropagationDao.getSizeOfOnClosedList(resourceID)>0 is True"); 
+		else
+			System.out.println("changePropagationDao.getSizeOfOnClosedList(resourceID)>0 is False"); 
+			
+		
 		if(resourceDao.isTrueOnClose(resourceID) && changePropagationDao.getSizeOfOnClosedList(resourceID)>0) {
 			String json = new Gson().toJson(changePropagationDao.getAllOperationsOfOnClosedList(resourceID));
 	        String socketPackets = "OnClose" + json ;         
 	        System.out.println("OnClose SocketPackets are: " + socketPackets);
 	        
 	        
-			new SendOnCloseChangeThread(resourceID, json);
+			new SendOnCloseChangeThread(resourceID, socketPackets);
 			
 			changePropagationDao.removeAllOperationOfOnClosedList(resourceID);
 		}
@@ -370,14 +381,20 @@ public class Main {
         Boolean flagOnClose = true; 
     	for(Propagation p : Pro)
     		if(p.resourceID.equals(resourceID)) {
-    			if(p.publishStrategy.equals("Online")) {
+				flagOnClose = false ;
+    			if(p.getpublishStrategy()==null)
+    				flagOnClose = true ; 
+    			else if(p.publishStrategy.equals("Online")) {
     				resourceDao.updateOnClose(clientID, resourceID, false);
-    				flagOnClose = false ; 
+    				System.out.println("On close Propagation for " + clientID + " and " + resourceID + " set false ... ");
     			}
+    			break; 
     		}
         if(flagOnClose) {
-        	if(clientDao.getClientByClientID(clientID).defaultPublish.equals("Online"))
+        	if(clientDao.getClientByClientID(clientID).defaultPublish.equals("Online")) {
         		resourceDao.updateOnClose(clientID, resourceID, false);
+				System.out.println("On close default Propagation for " + clientID + " set false ... ");
+        	}
         }
         
         
@@ -397,19 +414,26 @@ public class Main {
       		
       		String destUri = null ; 
       		
-      		if(clientID.equals("Client1"))
-      			destUri = "ws://localhost:6001/websocket";
-      		else if(clientID.equals("Client3"))
-      			destUri = "ws://localhost:6003/websocket";
       		
-      		
+      		if(localTest==true) {
+	      		if(clientID.equals("Client1"))
+	      			destUri = "ws://localhost:6001/websocket";
+	      		else if(clientID.equals("Client3"))
+	      			destUri = "ws://localhost:6003/websocket";
+      		}
+      		else {
+      			String clientAddress = clientDao.getClientByClientID(clientID).getclientAddress();
+      			clientAddress = clientAddress.substring(0, clientAddress.indexOf(':'));      			
+      			destUri = "ws://" + clientAddress + ":6000/websocket";
+      			System.out.println("destUri is " + destUri);
+      		}
 //      		if(clientID.equals("Client1"))
 //      			destUri = "ws://192.168.1.3:6000/websocket";
 //      		else if(clientID.equals("Client2"))
 //      			destUri = "ws://192.168.1.5:6000/websocket";
-//      		else if(clientID.equals("Client3"))
+//      		else if(clientID.equals("Client3"))  
 //      			destUri = "ws://192.168.1.7:6000/websocket";
-      		
+
 
           	webSocketClient.start();
           	URI echoUri = new URI(destUri);

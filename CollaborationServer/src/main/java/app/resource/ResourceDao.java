@@ -30,10 +30,6 @@ public class ResourceDao {
     
     private List<ArrayList<Boolean>> onClose = new ArrayList<ArrayList<Boolean>>();
 	
-//	2022-01-24T13:26:32.753765700
-//	private final LocalDateTime now = LocalDateTime.now();
-	
-//    private List<ConflictCheckingThread> confCheckingThreads = new ArrayList<ConflictCheckingThread>();
     
     private List<Resource> resources  = ImmutableList.of(
        // new Resource("Resources1", "..\\source\\Ecore.ecore", "..\\soruce\\Ecore.enotation", "Bahman", now)
@@ -50,6 +46,8 @@ public class ResourceDao {
                 .build();
     	
     	ArrayList<Boolean> temp = new ArrayList<Boolean>();
+    	
+//    	System.out.println("clientDao size is " + Main.clientDao.getSize());
     	for(int i=0; i<Main.clientDao.getSize(); i++) {
     		temp.add(true);
     	}
@@ -131,25 +129,37 @@ public class ResourceDao {
     	
     	int i = getIndex(resourceID); // row
     	int j = Main.clientDao.getIndex(clientID); //column 
+    	
+    	System.out.println("i in isTrueOnClose for " + resourceID + " is: " + i);
+    	System.out.println("j in isTrueOnClose for " + clientID + " is: " + j);
 
     
     	if(i>=0 && j>=0)
-    		onClose.get(i).set(j, false);
+    		onClose.get(i).set(j, value);
     	
     }
     
     public Boolean isTrueOnClose(String resourceID) {
     	
-    	int j = getIndex(resourceID);
-    	if(j==-1)
+    	int i = getIndex(resourceID);
+    	
+    	System.out.println("i in isTrueOnClose for " + resourceID + " is: " + i);
+    	
+    	if(i==-1)
     		return true;
     	
-    	for(int i=0; i<onClose.size(); i++) {
-    		if(onClose.get(i).get(j)==false)
+    	for(int j=0; j<onClose.get(i).size(); j++) {
+    		if(onClose.get(i).get(j)==false) {
+    			System.out.println("i is: " + i  + " ,j is: " + j);
     			return false ;
+    		}
     	}
     	
     	return true ; 
+    }
+    
+    public int onCloseSize() {
+    	return onClose.size();
     }
     
 }

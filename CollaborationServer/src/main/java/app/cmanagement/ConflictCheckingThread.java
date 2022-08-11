@@ -95,16 +95,35 @@ public class ConflictCheckingThread implements Runnable  {
 	    		  Main.changePropagationDao.addOperationToFinalList(sp);	    		
 	    		  for(ClientInfo c : Main.clientDao.getAllClients()) {
 	    			  if( (c.getClientID().equals(sp.getClientID())==false) && (c.getResourceList().contains(sp.getResourceID())==true)) {
-	    				  if(Main.propagationDao.getPropagation(c.getClientID(), sp.getResourceID())==null) {
-	    					  if(c.getdefaultSubscribe().equals("OnDemand")) {
-	    						  System.out.println("Send OnDemand One Change to " + c.getClientID());
-	    						  new SendOneChangeThread(c.getClientID(),sp);
-	    					  }
+	    				  
+//	    				  if(Main.propagationDao.getPropagation(c.getClientID(), sp.getResourceID())==null) {
+//	    					  if(c.getdefaultSubscribe().equals("OnDemand")) {
+//	    						  System.out.println("Send OnDemand One Change to " + c.getClientID());
+//	    						  new SendOneChangeThread(c.getClientID(),sp);
+//	    					  }
+//	    				  }
+//	    				  if(Main.propagationDao.exsitPropagation(c.getClientID(), sp.getResourceID())==false) {
+//	    					  if(c.getdefaultSubscribe().equals("OnDemand")) {
+//	    						  System.out.println("Send OnDemand One Change to " + c.getClientID());
+//	    						  new SendOneChangeThread(c.getClientID(),sp);
+//	    					  }
+//	    				  }
+//	    				  else if(Main.propagationDao.getPropagation(c.getClientID(), sp.getResourceID()).getsubscribeStrategy().equals("OnDemand")){
+//	    					  System.out.println("OnDemand Send One Change to " + c.getClientID());
+//	    					  new SendOneChangeThread(c.getClientID(),sp);
+//	    				  }
+	    				  
+	    				  if(Main.propagationDao.exsitPropagation(sp.getResourceID(), c.getClientID())) {
+	    					  if(Main.propagationDao.getPropagation(sp.getResourceID(), c.getClientID()).getsubscribeStrategy().equals("OnDemand")){
+		    					  System.out.println("OooonDemand Send One Change to " + c.getClientID());
+		    					  new SendOneChangeThread(c.getClientID(),sp);
+		    				  }
 	    				  }
-	    				  else if(Main.propagationDao.getPropagation(c.getClientID(), sp.getResourceID()).getsubscribeStrategy().equals("OnDemand")){
-	    					  System.out.println("OnDemand Send One Change to " + c.getClientID());
-	    					  new SendOneChangeThread(c.getClientID(),sp);
-	    				  }
+	    				  else if(c.getdefaultSubscribe().equals("OnDemand")) {
+    						  System.out.println("Sssssend OnDemand One Change to " + c.getClientID());
+    						  new SendOneChangeThread(c.getClientID(),sp);
+    					  }
+
 	    			  }
 	    		  }
 	    		  

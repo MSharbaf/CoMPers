@@ -65,15 +65,22 @@ public class SendOneChangeThread implements Runnable  {
 			   destUri = "ws://" + serverAddress + ":6000/websocket" ;
 			   System.out.println("destUri for " + clientID + " is : " + destUri);
 	      		
-			   if(clientID.equals("Client1")) {
-				   destUri = "ws://localhost:6001/websocket";
-				   System.out.println("send to Client1 on 6001");
+			   if(Main.localTest==true) {   
+				   if(clientID.equals("Client1")) {
+					   destUri = "ws://localhost:6001/websocket";
+					   System.out.println("send to Client1 on 6001");
+				   }
+				   else if(clientID.equals("Client3")) {
+					   destUri = "ws://localhost:6003/websocket";
+					   System.out.println("send to Client3 on 6003");
+				   }
 			   }
-			   else if(clientID.equals("Client3")) {
-				   destUri = "ws://localhost:6003/websocket";
-				   System.out.println("send to Client3 on 6003");
+			   else {
+				   String clientAddress = Main.clientDao.getClientByClientID(clientID).getclientAddress();
+				   clientAddress = clientAddress.substring(0, clientAddress.indexOf(':'));      			
+				   destUri = "ws://" + clientAddress + ":6000/websocket";
+				   System.out.println("destUri is " + destUri);
 			   }
-			   
 //	      		if(clientID.equals("Client1"))
 //	      			destUri = "ws://192.168.1.3:6000/websocket";
 //	      		else if(clientID.equals("Client2"))
