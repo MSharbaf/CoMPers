@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ASCII"?>
+<enotation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:enotation="http://www.eclipsesource.com/glsp/ecore/notation">
+  <semanticElement uri="/"/>
+  <elements xsi:type="enotation:Shape">
+    <semanticElement uri="//Class"/>
+    <position x="171.171875" y="134.0"/>
+    <size width="91.015625" height="43.0"/>
+  </elements>
+  <elements xsi:type="enotation:Shape">
+    <semanticElement uri="//Abstract"/>
+    <position x="299.09375" y="381.0"/>
+    <size width="115.8125" height="43.0"/>
+  </elements>
+  <elements xsi:type="enotation:Shape">
+    <semanticElement uri="//Enum"/>
+    <position x="670.0" y="69.0"/>
+    <size width="93.25" height="43.0"/>
+  </elements>
+  <elements xsi:type="enotation:Shape">
+    <semanticElement uri="//Interface"/>
+    <position x="722.0" y="237.0"/>
+  </elements>
+  <elements xsi:type="enotation:Shape">
+    <semanticElement uri="//DataType"/>
+    <position x="386.0" y="36.666666666666686"/>
+  </elements>
+  <elements xsi:type="enotation:Edge" source="//@elements.0" target="//@elements.1">
+    <semanticElement uri="//Class/reference"/>
+    <bendPoints x="208.640625" y="402.5"/>
+  </elements>
+  <elements xsi:type="enotation:Edge" source="//@elements.3" target="//@elements.0">
+    <semanticElement uri="//Interface/containment"/>
+    <bendPoints x="791.09375" y="155.5"/>
+  </elements>
+  <elements xsi:type="enotation:Edge" type="edge:inheritance" source="//@elements.3" target="//@elements.1"/>
+</enotation:Diagram>

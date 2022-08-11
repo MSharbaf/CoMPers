@@ -1,0 +1,41 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>org.eclipse.emfcloud.ecore.backend-app</artifactId>
+	<packaging>pom</packaging>
+	<version>1.0</version>
+	
+	<parent>
+		<groupId>org.eclipse.emfcloud.ecore</groupId>
+		<artifactId>org.eclipse.emfcloud.ecore.parent</artifactId>	
+		<version>1.0</version>
+	</parent>
+
+	<modules>
+		<module>org.eclipse.emfcloud.ecore.backend.app</module>
+		<module>org.eclipse.emfcloud.ecore.codegen.feature</module>
+		<module>org.eclipse.emfcloud.ecore.codegen.product</module>
+	</modules>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>target-platform-configuration</artifactId>
+				<configuration>
+					<target>
+						<artifact>
+							<groupId>org.eclipse.emfcloud.ecore</groupId>
+							<artifactId>targetplatform</artifactId>
+							<version>1.0</version>
+							<classifier>ecore-backend-app</classifier>
+						</artifact>
+					</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

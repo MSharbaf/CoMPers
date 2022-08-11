@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ASCII"?>
+<enotation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:enotation="http://www.eclipsesource.com/glsp/ecore/notation">
+  <semanticElement uri="/"/>
+  <elements xsi:type="enotation:Shape">
+    <semanticElement uri="//Seminar"/>
+    <position x="771.0" y="123.0"/>
+  </elements>
+  <elements xsi:type="enotation:Shape">
+    <semanticElement uri="//Professor"/>
+    <position x="479.0" y="468.0"/>
+  </elements>
+  <elements xsi:type="enotation:Shape">
+    <semanticElement uri="//Student"/>
+    <position x="202.0" y="123.0"/>
+  </elements>
+  <elements xsi:type="enotation:Edge" source="//@elements.1" target="//@elements.0">
+    <semanticElement uri="//Professor/instructs"/>
+  </elements>
+  <elements xsi:type="enotation:Shape">
+    <semanticElement uri="//Enrolment"/>
+    <position x="522.9710470864911" y="-8.878831501689726"/>
+  </elements>
+  <elements xsi:type="enotation:Shape">
+    <semanticElement uri="//Status"/>
+    <position x="194.23105586347387" y="451.8071108498139"/>
+  </elements>
+  <elements xsi:type="enotation:Shape">
+    <semanticElement uri="//Course"/>
+    <position x="696.463166967061" y="650.1308698959834"/>
+  </elements>
+</enotation:Diagram>

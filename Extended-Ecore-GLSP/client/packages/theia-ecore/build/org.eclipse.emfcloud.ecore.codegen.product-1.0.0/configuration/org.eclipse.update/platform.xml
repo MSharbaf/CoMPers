@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config date="1650977185592" transient="false">
+	<site updateable="true" url="platform:/base/" enabled="true" policy="USER-EXCLUDE">
+		<feature id="org.eclipse.emfcloud.ecore.codegen.feature" version="1.0.0.202204261245" url="features/org.eclipse.emfcloud.ecore.codegen.feature_1.0.0.202204261245/">
+		</feature>
+		<feature id="org.eclipse.emf.ecore" version="2.24.0.v20210405-0628" url="features/org.eclipse.emf.ecore_2.24.0.v20210405-0628/">
+		</feature>
+		<feature id="org.eclipse.core.runtime.feature" version="1.2.1300.v20210602-1312" url="features/org.eclipse.core.runtime.feature_1.2.1300.v20210602-1312/">
+		</feature>
+		<feature id="org.eclipse.emf.codegen.ecore" version="2.26.0.v20210506-1425" url="features/org.eclipse.emf.codegen.ecore_2.26.0.v20210506-1425/">
+		</feature>
+		<feature id="org.eclipse.emf.common" version="2.22.0.v20210319-0732" url="features/org.eclipse.emf.common_2.22.0.v20210319-0732/">
+		</feature>
+		<feature id="org.eclipse.equinox.core.feature" version="1.13.200.v20210602-1312" url="features/org.eclipse.equinox.core.feature_1.13.200.v20210602-1312/">
+		</feature>
+		<feature id="org.eclipse.emf.codegen" version="2.22.0.v20210420-0623" url="features/org.eclipse.emf.codegen_2.22.0.v20210420-0623/">
+		</feature>
+	</site>
+</config>

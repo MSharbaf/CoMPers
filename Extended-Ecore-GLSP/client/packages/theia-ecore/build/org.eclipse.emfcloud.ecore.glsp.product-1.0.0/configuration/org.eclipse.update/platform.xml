@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config date="1650977205825" transient="false">
+	<site updateable="true" url="platform:/base/" enabled="true" policy="USER-EXCLUDE">
+		<feature id="org.eclipse.emfcloud.ecore.glsp.feature" version="1.0.0.202204261245" url="features/org.eclipse.emfcloud.ecore.glsp.feature_1.0.0.202204261245/">
+		</feature>
+		<feature id="org.eclipse.core.runtime.feature" version="1.2.1300.v20210602-1312" url="features/org.eclipse.core.runtime.feature_1.2.1300.v20210602-1312/">
+		</feature>
+		<feature id="org.eclipse.equinox.core.feature" version="1.13.200.v20210602-1312" url="features/org.eclipse.equinox.core.feature_1.13.200.v20210602-1312/">
+		</feature>
+	</site>
+</config>

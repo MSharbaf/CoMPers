@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.eclipse.core.runtime.feature"
+      label="%featureName"
+      version="1.2.1300.v20210602-1312"
+      provider-name="%providerName">
+
+   <description>
+      %description
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <includes
+         id="org.eclipse.equinox.core.feature"
+         version="1.13.200.v20210602-1312"/>
+
+   <plugin
+         id="org.eclipse.core.runtime"
+         download-size="69"
+         install-size="149"
+         version="3.22.0.v20210506-1025"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.core.variables"
+         download-size="35"
+         install-size="64"
+         version="3.5.0.v20210510-1945"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.core.contenttype"
+         download-size="98"
+         install-size="207"
+         version="3.7.1000.v20210409-1722"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.equinox.preferences"
+         download-size="133"
+         install-size="274"
+         version="3.8.200.v20210212-1143"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.core.expressions"
+         download-size="90"
+         install-size="178"
+         version="3.7.100.v20210203-1000"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.core.jobs"
+         download-size="105"
+         install-size="208"
+         version="3.11.0.v20210420-1453"
+         unpack="false"/>
+
+</feature>

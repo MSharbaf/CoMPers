@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="SharbafTest" nsURI="SharbafTest" nsPrefix="SharbafTest">
+  <eClassifiers xsi:type="ecore:EClass" name="Student">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="stdName"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="stdNumber"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="averageMark"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Seminar">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="semiarName"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fees"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Professor">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="profName"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="salary"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="instructs" upperBound="2"
+        eType="#//Seminar"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Enrolment"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="Status"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Course"/>
+</ecore:EPackage>
