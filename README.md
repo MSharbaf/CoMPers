@@ -19,7 +19,7 @@ In the following, we show several examples to represent some possible collaborat
 
 ### 1. Online-OnDemand Collaboration
 
-For more details, please see the [Online-OnDemand Video](https://drive.google.com/file/d/1xpe0GgBEOx4pUjeULyyKV8UiwlU-V-YK/view?usp=sharing).
+For more details, please see the [Online-OnDemand Video](https://drive.google.com/file/d/1IwCLoRzR-mZ-GfrgyLRVqZX_cs8V8PZq/view?usp=sharing).
 
 ![Online-OnDemand Example](images/OnlineOnDemand.gif)
 
