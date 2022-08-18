@@ -9,7 +9,7 @@ In our prototype implementation, we extended the Ecore-GLSP editor, which is par
 The CoMPers collaboration server is central component to support collaborative modeling. It is responsible with processing change operations and conflict management. The collaboration server is located in the `CollaborationServer/` folder and its specific documentation can be found in the [Collaboration Server README](CollaborationServer/README.md).
 
 ## Ecore-GLSP Editor
-An **example** of how to build the client instance for connecting to the CoMPers collaboration server is the extended version of EMF.cloud Ecore-GLSP Editor located in the `Extended-Ecore-GLSP/` folder. 
+An **example** of how to build the client instance for connecting to the CoMPers collaboration server is the extended version of EMF.cloud Ecore-GLSP Editor located in the `Extended-Ecore-GLSP/` folder and its specific documentation can be found in the [Extended Ecore-GLSP README](Extended-Ecore-GLSP/README.md). 
 In the following, we show some possible collaboration scenarios based on the personalized change propagation approach proposed by the CoMPers framework.   
 
 ### Online-OnDemand Collaboration

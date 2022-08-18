@@ -5,7 +5,7 @@
 ## Prerequisites
 
 ### Java
-You need Java 11 to build the ecore-glsp editor and Javalin 4 to communicate with the collaboration server.
+You need Java 11 to build the ecore-glsp editor and Javalin 4.3.0 to communicate with the collaboration server.
 
 ## Getting started
 
@@ -25,7 +25,7 @@ Install [nvm] scripts as described in the [client README](https://github.com/ecl
 
 ## Runnig
   * Start the ecore-glsp server by running the lunch `org.eclipse.emfcloud.ecore.modelserver-app.Ecore-GLSP App.launch` configuration from Eclipse.
-  * Start the ecore-glsp client by running the launch `Start Electron Backend` configuration from VS code.
+  * Start the ecore-glsp client by running the launch `Start Browser` configuration from VS code.
   * After that you should be able to connect with your browser at localhost:3000.
 
 
@@ -45,4 +45,4 @@ For more information, please visit the [EMF.cloud Website](https://www.eclipse.o
 
 Extended Ecore GLSP provides a web-based editor for collaborative development of Ecore Models using CoMPers collaboration server and based on the Personalized Change Propagation (PCP).
 
-![Extednded Ecore GLSP Example](images/diagramanimated.gif)
+![Extednded Ecore GLSP Example](images/EcoreGLSPEditor.gif)
