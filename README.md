@@ -15,7 +15,7 @@ To start working with the CoMPers collaboration server, please see the video tha
 
 ## Ecore-GLSP Editor
 An **example** of how to build the client instance for connecting to the CoMPers collaboration server is the extended version of EMF.cloud Ecore-GLSP Editor located in the `Extended-Ecore-GLSP/` folder and its specific documentation can be found in the [Extended Ecore-GLSP README](Extended-Ecore-GLSP/README.md). 
-In the following, we show several examples to represent some possible collaboration scenarios, inconsistency preservation, and conflict handling capabilities in the proposed personalized change propagation approach that is used in the CoMPers framework.   
+In the following, we show several examples to represent some possible collaboration scenarios, inconsistency preservation, and conflict handling capabilities in the proposed personalized change propagation approach that is used by the CoMPers framework.   
 
 ### 1. Online-OnDemand Collaboration
 
@@ -31,23 +31,23 @@ For more details, please see the [Offline-OnDemand Video](https://drive.google.c
 ![Offline-OnDemand Example](images/OfflineOnDemand.gif)
 
 
-### OnClose Check-out Example
+### 3. OnClose Check-out Example
 
 For more details, please see the [Online-OnClose Video](https://drive.google.com/file/d/1mSWfnrGpHEo_jUz4iX91N5FQ-JWXG2NF/view?usp=sharing).
 
 ![Online-OnClose Example](images/PublishOnline-SubscribeOnClose.gif)
 
 
-### Inconsistency Preservation Example
+### 4. Inconsistency Preservation Example
 
 For more details, please see the [Inconsistency Preservation Video](https://drive.google.com/file/d/1dui2h7AHNNv6RkV-2-vvvTvon150o0gc/view?usp=sharing).
 
 ![Inconsistency Preservation Example](images/InconsistencyPreservation.gif)
 
 
-### Conflict Handling Example
+### 5. Conflict Handling Example
 
-For more details, please see the [Conflict Handling Video](https://drive.google.com/file/d/1mSWfnrGpHEo_jUz4iX91N5FQ-JWXG2NF/view?usp=sharing).
+For more details, please see the [Conflict Handling Video](https://drive.google.com/file/d/1cmJT8gBdmq4O77AFPOlXNEkj71C7Cp_p/view?usp=sharing).
 
 ![Conflict Handling Example](images/ConflictHandling.gif)
 
