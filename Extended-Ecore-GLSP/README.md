@@ -20,7 +20,7 @@ Build server and client with the following build-script. This script also copies
 
 Install [Tycho] Target Platform in the ecore-glsp server from Eclipse
 
-Install [nvm] scripts as described in the [client README] [client README](https://github.com/eclipse-emfcloud/ecore-glsp/blob/master/client/README.md).
+Install [nvm] scripts as described in the [client README](https://github.com/eclipse-emfcloud/ecore-glsp/blob/master/client/README.md).
 
 
 ## Runnig
