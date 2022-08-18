@@ -1,3 +1,3 @@
 # CoMPers
 
-![OnClose Example](images/PublishOnline-SubscribeOnClose.gif)
+![OnClose Example](images/PublishOnline-SubscribeOnClose1.gif)
