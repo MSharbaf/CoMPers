@@ -5,7 +5,7 @@
 ## Prerequisites
 
 ### Java
-You need Java 11 to build the ecore-glsp editor and Javalin 4 to communicate with the collaboration server.
+You need Java 11 to build the ecore-glsp editor and Javalin 4.3.0 to communicate with the collaboration server.
 
 ## Getting started
 
