@@ -20,10 +20,10 @@ Build server and client with the following build-script. This script also copies
 
 Install [Tycho] Target Platform in the ecore-glsp server from Eclipse
 
-Install [nvm] scripts as described in the [client README] [client README](https://github.com/eclipse-emfcloud/ecore-glsp/client/README.md).
+Install [nvm] scripts as described in the [client README] [client README](https://github.com/eclipse-emfcloud/ecore-glsp/blob/master/client/README.md).
 
 
-Run
+## Runnig
   * Start the ecore-glsp server by running the lunch `org.eclipse.emfcloud.ecore.modelserver-app.Ecore-GLSP App.launch` configuration from Eclipse.
   * Start the ecore-glsp client by running the launch `Start Electron Backend` configuration from VS code.
   * After that you should be able to connect with your browser at localhost:3000.
