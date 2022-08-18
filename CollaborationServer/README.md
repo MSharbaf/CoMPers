@@ -18,6 +18,6 @@ Clone the collaboration server:
   * Execute the Java main class: `CollaborationServer.src.main.java.app` 
   * After that you are able to open the CoMPers dashoboard with your browser at localhost:7000.
     - Use following information to login as Admin:
-	   User: Admin
-	   Password: password
+	   -- `Username: Admin`
+	   -- `Password: password`
 
