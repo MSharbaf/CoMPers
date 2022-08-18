@@ -40,14 +40,14 @@ For more details, please see the [Online-OnClose Video](https://drive.google.com
 
 ### Inconsistency Preservation Example
 
-For more details, please see the [Online-OnClose Video](https://drive.google.com/file/d/1mSWfnrGpHEo_jUz4iX91N5FQ-JWXG2NF/view?usp=sharing).
+For more details, please see the [Online-OnClose Video](https://drive.google.com/file/d/1dui2h7AHNNv6RkV-2-vvvTvon150o0gc/view?usp=sharing).
 
-![Online-OnClose Example](images/PublishOnline-SubscribeOnClose.gif)
+![Inconsistency Preservation Example](images/InconsistencyPreservation.gif)
 
 
 ### Conflict Handling Example
 
 For more details, please see the [Online-OnClose Video](https://drive.google.com/file/d/1mSWfnrGpHEo_jUz4iX91N5FQ-JWXG2NF/view?usp=sharing).
 
-![Online-OnClose Example](images/PublishOnline-SubscribeOnClose.gif)
+![Conflict Handling Example](images/ConflictHandling.gif)
 
