@@ -15,8 +15,7 @@ You need Java 11 to build the ecore-glsp editor and Javalin 4.3.0 to communicate
 
   * Build server and client with the following build-script. This script also copies the needed server artifacts to the client.
 
-  cd Extended-Ecore-GLSP 
-    ./build.sh
+  - `cd Extended-Ecore-GLSP ./build.sh`
 
   * Install [Tycho] Target Platform in the ecore-glsp server from Eclipse
 
