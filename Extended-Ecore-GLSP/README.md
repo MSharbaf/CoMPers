@@ -9,7 +9,7 @@ You need Java 11 to build the ecore-glsp editor and Javalin 4.3.0 to communicate
 
 ## Getting started
 
-  * Clone the extended ecore-glsp editor:
+  Clone the extended ecore-glsp editor:
 
     git clone https://github.com/MSharbaf/CoMPers.git
 
