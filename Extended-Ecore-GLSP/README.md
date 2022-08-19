@@ -24,10 +24,10 @@ Install [nvm] scripts as described in the [client README](https://github.com/ecl
 
 ### Setup
   * Set the `serverAddress` in the ecore-glsp server at beginning of the `ChangePropagationHandler` class in `org.eclipse.emfcloud.ecore.glsp.handler` from Eclipse.
-  * Set the `ClientID` in the `ChangePropagationHandler` of `org.eclipse.emfcloud.ecore.glsp.handler` and based on the registerd ID for the client in the `Collaboration Server`. 
+  * Set the `ClientID` in the `ChangePropagationHandler` of `org.eclipse.emfcloud.ecore.glsp.handler` based on the registerd ID for the client in the `Collaboration Server`. 
   
 ## Runnig
-  * Start the ecore-glsp server by running the lunch `org.eclipse.emfcloud.ecore.modelserver-app.Ecore-GLSP App.launch` configuration from Eclipse.
+  * Start the ecore-glsp server by running the lunch `org.eclipse.emfcloud.ecore.modelserver-app.Ecore-GLSP-App.launch` configuration from Eclipse.
   * Start the ecore-glsp client by running the launch `Start Browser` configuration from VS code.
   * After that you should be able to connect with your browser at localhost:3000.
 
