@@ -15,14 +15,17 @@ Clone the extended ecore-glsp editor:
 
 Build server and client with the following build-script. This script also copies the needed server artifacts to the client.
 
-  * cd ecore-glsp
+  * cd Extended-Ecore-GLSP
     ./build.sh
 
 Install [Tycho] Target Platform in the ecore-glsp server from Eclipse
 
 Install [nvm] scripts as described in the [client README](https://github.com/eclipse-emfcloud/ecore-glsp/blob/master/client/README.md).
 
-
+### Setup
+  * Set the `serverAddress` in the ecore-glsp server at beginning of the `ChangePropagationHandler` class in `org.eclipse.emfcloud.ecore.glsp.handler` from Eclipse.
+  * Set the `ClientID` in the `ChangePropagationHandler` of `org.eclipse.emfcloud.ecore.glsp.handler` and based on the registerd ID for the client in the `Collaboration Server`. 
+  
 ## Runnig
   * Start the ecore-glsp server by running the lunch `org.eclipse.emfcloud.ecore.modelserver-app.Ecore-GLSP App.launch` configuration from Eclipse.
   * Start the ecore-glsp client by running the launch `Start Browser` configuration from VS code.
