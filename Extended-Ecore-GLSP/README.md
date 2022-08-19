@@ -9,18 +9,18 @@ You need Java 11 to build the ecore-glsp editor and Javalin 4.3.0 to communicate
 
 ## Getting started
 
-Clone the extended ecore-glsp editor:
+  * Clone the extended ecore-glsp editor:
 
     git clone https://github.com/MSharbaf/CoMPers.git
 
-Build server and client with the following build-script. This script also copies the needed server artifacts to the client.
+  * Build server and client with the following build-script. This script also copies the needed server artifacts to the client.
 
-  * cd Extended-Ecore-GLSP
+  - cd Extended-Ecore-GLSP
     ./build.sh
 
-Install [Tycho] Target Platform in the ecore-glsp server from Eclipse
+  * Install [Tycho] Target Platform in the ecore-glsp server from Eclipse
 
-Install [nvm] scripts as described in the [client README](https://github.com/eclipse-emfcloud/ecore-glsp/blob/master/client/README.md).
+  * Install [nvm] scripts as described in the [client README](https://github.com/eclipse-emfcloud/ecore-glsp/blob/master/client/README.md).
 
 ### Setup
   * Set the `serverAddress` in the ecore-glsp server at beginning of the `ChangePropagationHandler` class in `org.eclipse.emfcloud.ecore.glsp.handler` from Eclipse.
