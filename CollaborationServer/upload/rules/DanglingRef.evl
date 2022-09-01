@@ -1,0 +1,13 @@
+context Model!Reference {
+  constraint DanglingRef {
+
+ 	guard : self.getMatching().isDefined()
+
+ 	check {
+ 		if(self.ownedEndMember.all->forAll(m|Model.Classifiers.all->exists(c|c.name == self.name))){
+ 			return false ;
+ 		} else{
+ 			return true ;
+ 		}
+ 	}
+}

@@ -1,0 +1,17 @@
+context Model!Operation {
+  constraint Pull-up {
+
+ 	guard : self.getMatching().isDefined()
+
+ 	check {
+ 		if(self.owner.general.generalization.all->forAll(c|c.ownedOperation.all->exists(op|op.name == self.name))){
+ 
+			if(self.getMatching().left.owner.general.generalization.all->
+				forAll(lc|lc.ownedOperation.all->exists(lop|lop.name == self.name))){
+ 					return false ;
+ 				}
+ 			}
+ 			return true ;
+ 		}
+ 	}
+}
