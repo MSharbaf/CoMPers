@@ -1,0 +1,12 @@
+context Model!Class {
+  constraint cyclicInheritance {
+
+ 	guard : self.generalization.isDefined()
+
+ 	check {
+ 		if(self.generalization.general->closure(it|it.generalization.all)->exists(c|c.owner.name == self.name)){
+
+ 			return true ;
+ 		}
+ 	}
+}
